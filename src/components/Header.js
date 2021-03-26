@@ -3,6 +3,8 @@ import User from "./User"
 
 function Header(){
     const [user, setUser] = useState([])
+    // const [restrictions, setRestrictions] = useState([])
+
     console.log(user)
 
     useEffect(() => {
@@ -19,10 +21,17 @@ function Header(){
             key={userProfile.id}
             name={userProfile.name}
             image={userProfile.image}
-            // restrictions={userProfile.restrictions}
-            // diets={userProfile.diets}
+            restrictions={userProfile.preferences.map((preference) => {
+                return preference.restriction
+            })}
+            diet={userProfile.diets.map((diet) => {
+                return diet.name
+            })}
             />
+            
         )
+            
+           
     })
    
     return(
