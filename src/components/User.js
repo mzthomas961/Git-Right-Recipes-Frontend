@@ -5,11 +5,11 @@ function User({name, image, restrictions, diet}) {
     console.log(restrictions)
 return (
     <div>
-        <h3>{name}</h3>
         <img src={image} alt={name}/>
+        <h3>{name}</h3>
         <h3>Restrictions: {restrictions}</h3> 
         <h3>Preference: {diet}</h3>
     </div>
-)
+    )
 }
 export default User
