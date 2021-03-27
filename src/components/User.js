@@ -3,6 +3,11 @@ import React from "react"
 
 function User({name, image, restrictions, diet}) {
     console.log(restrictions)
+
+
+
+    
+
 return (
     <div>
         <h3>{name}</h3>
