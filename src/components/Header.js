@@ -16,7 +16,9 @@ function Header(){
     },[])
 
     const userComponents = user.map((userProfile) => {
+        console.log(userProfile.image)
         return (
+
             <User 
             key={userProfile.id}
             name={userProfile.name}
