@@ -4,7 +4,7 @@ import RecipeContainer from "./RecipeContainer"
 
 function App() {
   return (
-    <div  className="app-container">
+    <div  className="app-container" class='parent' >
       <h1 className="title">Git Right Recipes</h1>
       <Header />
       <RecipeContainer />
