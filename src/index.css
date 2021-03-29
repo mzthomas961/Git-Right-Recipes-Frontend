@@ -15,3 +15,30 @@ code {
 .title {
   text-align: left;
 }
+
+.images {
+  width: 6 rem;
+  height: 6 rem; 
+}
+
+/* .foodcard {
+  width:15rem;
+  height: 15rem;
+  border-radius: 10px;
+  border: 2px;
+  margin: 1rem 2rem;
+
+}
+
+.card {
+  margin: 1rem;
+}
+
+.carddeck {
+  display: flex;
+  justify-content: space-evenly;
+}
+ */
+
+
+
