@@ -23,6 +23,9 @@ return (
         <h3>{name}</h3>
         <h3>Restrictions: {restrictions}</h3> 
         <h3>Preference: {diet}</h3>
+        <>
+  
+</>
     </div>
     )
 }
