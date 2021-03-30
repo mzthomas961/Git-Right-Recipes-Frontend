@@ -15,7 +15,7 @@ console.log(clicked)
         <div>
           <h3>{name}</h3>
            <img src={image} alt={name}/>
-           <section>
+          <section>
           <button onClick={handleClick}> Recipe Details</button>
         </section>
         </div>

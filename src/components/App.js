@@ -4,6 +4,7 @@ import Header from "./Header";
 import RecipeContainer from "./RecipeContainer";
 import Form from "./Form";
 
+
 function App() {
   const [users, setUser] = useState([])
   const [recipes, setRecipes] = useState([])
@@ -23,13 +24,30 @@ useEffect(() => {
   setRecipes(recipeArray));
 },[])
 
+function updatesUserProfile(id) {
+  const updatedUser = users.map(user => {
+    if (user.id === id) {
+      return (setUser(updatedUser))
+    } else {
+        return user
+      }
+})
+}
 
   return (
     <div>
       <h1>Git Right Recipes</h1>
+      <button>Home</button>
+      <button>Update Account</button>
+      <button>Delete Account</button>
+      <button>Update Profile</button>
       <Header users={users}/>
+      <button>Preference Dropdown</button>
+      <button>Categories Dropdown</button>
+      <button>Search</button>
       <RecipeContainer recipes={recipes}/>
-      <Form/>
+      <Form users={users} updatesUser={updatesUserProfile}/>
+      
       </div>
   );
 }
