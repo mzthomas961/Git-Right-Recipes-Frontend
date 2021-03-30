@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // import RecipeDetails from "./RecipeDetails"
+// import { NavLink } from "react-router-dom"
 
 function Recipe({name,image}) {
   const [clicked, setClicked] = useState(false)
@@ -16,7 +17,9 @@ console.log(clicked)
           <h3>{name}</h3>
            <img src={image} alt={name}/>
           <section>
+          
           <button onClick={handleClick}> Recipe Details</button>
+        
         </section>
         </div>
         
