@@ -1,19 +1,10 @@
-import React,{useState,useEffect} from "react"
+import React from "react"
 import Recipe from "./Recipe"
 
-function RecipeContainer() {
-
-    const [recipes, setRecipes] = useState([])
-    console.log(recipes)
-
-    useEffect(() => {
-        fetch("http://localhost:3000/recipes")
-    .then(r => r.json())
-    .then(recipes => 
-        setRecipes(recipes));
-    },[])
+function RecipeContainer({recipes}) {
 
     const recipeComponents = recipes.map((recipe) => {
+        
         return (
             <Recipe 
             key={recipe.id}
@@ -26,7 +17,7 @@ function RecipeContainer() {
     })
     return (
         <div>
-        <h2>Recipe Container</h2>
+        <h2>All Recipes</h2>
         {recipeComponents}
         </div>
     )

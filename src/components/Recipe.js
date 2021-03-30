@@ -1,28 +1,27 @@
-import React from "react"
-import CardDeck from 'react-bootstrap/CardDeck'
-import Card from 'react-bootstrap/Card'
+import React, { useState } from "react";
+// import RecipeDetails from "./RecipeDetails"
 
-function Recipe({name,ingredients,image}){
-    return(
-        <CardDeck style={{width: 'flex', flexDirection: 'row'}}>
+function Recipe({name,image}) {
+  const [clicked, setClicked] = useState(false)
+  // (clicked ? null : <RecipeDetails instructions={instructions} ingredients={ingredients} />)
+console.log(clicked)
+
+  function handleClick() {
+    setClicked(!clicked)
+
+  }
+  
+  return (
+        <div>
+          <h3>{name}</h3>
+           <img src={image} alt={name}/>
+           <section>
+          <button onClick={handleClick}> Recipe Details</button>
+        </section>
+        </div>
         
-         <Card style={{width: 2, height: 2}} >
-          <Card.Img  variant="top" src={image} alt={name} />
-    <Card.Body style={{width: 1, height: 1}} >
-      <Card.Title>{name}</Card.Title>
-      <Card.Text>
-        {ingredients}
-      </Card.Text>
-        </Card.Body>
-         </Card>
+       
         
-    </CardDeck>
-        // <div>
-        // <h3>{name}</h3>
-        // <img src={image} alt={name}/>
-        // <h3>{ingredients}</h3>
-        // <p>{instructions}</p>
-        // </div>
     )
 }
 export default Recipe
