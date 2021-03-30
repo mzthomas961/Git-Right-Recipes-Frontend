@@ -4,12 +4,14 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import RecipeContainer from "./RecipeContainer";
 import Form from "./Form";
+import CategoryFilters from "./CategoryFilter"
 
 
 
 function App() {
   const [users, setUser] = useState([])
   const [recipes, setRecipes] = useState([])
+  const [filters, setFilters] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/users")
@@ -36,6 +38,30 @@ function updatesUserProfile(id) {
 })
 }
 
+function handleCategoryClick() {
+  setFilters(filter);
+}
+
+function handleCategoryFilter() {
+
+  const updatedFilterArray = recipes.filter( {
+    if(recipe => recipe.breakfast == true);
+    setRecipes(updatedFilterArray)
+    else
+  })
+
+  // let url = "http://localhost:3000/recipes";
+
+  // if (filters.type !== "all") {
+  //   url += `?type=${filters.type}`
+  // }
+  // fetch(url)
+  // .then((r) => r.json())
+  // .then((filteredRecipes) => {
+  //   setRecipes(filteredRecipes);
+  // });
+}
+
   return (
     <div>
       <h1>Git Right Recipes</h1>
@@ -49,6 +75,7 @@ function updatesUserProfile(id) {
       <button>Search</button>
       <RecipeContainer recipes={recipes}/>
       <Form users={users} updatesUser={updatesUserProfile}/>
+      <CategoryFilters onFindCategory={handleCategoryFilter} onHandleChange={handleCategoryClick} />
       </div>
   );
 }

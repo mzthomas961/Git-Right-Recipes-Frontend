@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import RecipeDetails from "./RecipeDetails"
-// import { NavLink } from "react-router-dom"
 
 function Recipe({name,image, instructions, ingredients}) {
   const [showDetails, setShowDetails] = useState(false)
-  // (clicked ? null : <RecipeDetails instructions={instructions} ingredients={ingredients} />)
+
 
 
   function handleClick() {
