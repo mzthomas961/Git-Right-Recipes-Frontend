@@ -9,9 +9,9 @@ function Header({users, onHandleDeleteUser}) {
             onHandleDeleteUser={onHandleDeleteUser}
             id={user.id}
             image={user.image}
-            diet={user.diets.map((diet) => {return (diet.name)})}
+            diet={user.diets.map((diet) => {return (diet.name + ", ")})}
             name={user.name}
-            restriction={user.preferences.map((preference) =>  {return (preference.restriction)})}
+            restriction={user.preferences.map((preference) =>  {return (preference.restriction + ", ")})}
             />
             )}
         ); 

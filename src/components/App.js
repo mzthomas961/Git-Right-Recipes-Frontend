@@ -23,6 +23,16 @@ useEffect(() => {
   setRecipes(recipeArray));
 },[]);
 
+function handlePreferenceDelete(id) {
+  const deletePreference = users.map(user => {
+  if (user.id === id){
+  return (setUsers(deletePreference))
+} else {
+    return user
+}
+  })
+}
+
 function onUserUpdate(id) {
   const updatedUser = users.map(user => {
     if (user.id === id) {
@@ -69,14 +79,14 @@ function onHandleDeleteUser(id) {
   return (
     <div>
       <h1>Git Right Recipes</h1>
+      <Form users={users} onUserUpdate={onUserUpdate} handlePreferenceDelete={handlePreferenceDelete}/>
       <button>Home</button>
       <button>Update Profile</button>
-      <Header users={users} onHandleDeleteUser={onHandleDeleteUser}/>
+      <Header users={users} onHandleDeleteUser={onHandleDeleteUser} />
       <button>Preference Dropdown</button>
       <button>Categories Dropdown</button>
       <button>Search</button>
       <RecipeContainer recipes={recipes}/>
-      <Form users={users} onUserUpdate={onUserUpdate}/>
       </div>
   );
 }
