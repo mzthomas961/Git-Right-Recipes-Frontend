@@ -7,6 +7,7 @@ function Form( { onUserUpdate }) {
 
     function handleOnUserUpdate(e) {
         e.preventDefault();
+   
         fetch("http://localhost:3000/preferences", {
             method: "POST",
             headers: {
@@ -47,6 +48,7 @@ function Form( { onUserUpdate }) {
                 <input type="text"  onChange={(e)=> setRestriction(e.target.value)}  placeholder="Restriction" value={restriction} />
             </label>
             <select value={diet} name="Diet" id="diet_id" onChange={(e) => setDiet(e.target.value)}>
+                <option value="0">Choose Option</option>
                  <option value="1">Vegetarian</option>
                  <option value="2">Vegan</option>
                  <option value="3">Paleo</option>

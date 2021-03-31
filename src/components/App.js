@@ -4,11 +4,14 @@ import Header from "./Header";
 import RecipeContainer from "./RecipeContainer";
 import Form from "./Form";
 import PreferencesForm  from "./PreferencesForm"
+import styled from "styled-components";
+
 
 function App() {
   const [users, setUsers] = useState([])
   const [recipes, setRecipes] = useState([])
   const [preferences, setPreferences] = useState([])
+  const [restrictions, setRestrictions] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:3000/users")
@@ -57,8 +60,15 @@ function onHandlePreferenceDelete(id) {
   setPreferences(updatedDeletedPreference)
 }
 
-
-
+// function handleRestrictionUpdate(newRestriction) {
+//   const updatedRestriction = preferences.map((preference) => {
+//     if (preference.restriction !== newRestriction) {
+//     return (setRestrictions(updatedRestriction))
+//   } else {
+//     return restrictions
+//   }
+//   })
+// }
 
 // function handleCategoryClick() {
 //   setFilters(filter);
@@ -84,17 +94,38 @@ function onHandlePreferenceDelete(id) {
   // });
 // }
 
+const Button = styled.button`
+background: dodgerblue;
+padding: 5px;
+border: 2px solid black;
+border-radius: 4px;
+cursor: pointer;
+transition: 200ms ease;
+color: white;
+text-decoration: none;
+font: 1rem sans-serif;
+
+&:hover {
+  background: blueviolet;
+  color: white;
+}
+
+&:focus {
+  background: hotpink;
+  color: white;
+}
+`;
+
   return (
     <div>
-      <h1>Git Right Recipes</h1>
-      <Form users={users} onUserUpdate={onUserUpdate}/>
-      <PreferencesForm preferences={preferences} onHandlePreferenceDelete={onHandlePreferenceDelete}/>
-      <button>Home</button>
-      <button>Update Profile</button>
+      <Button>Home</Button>
+      <Button>Update Profile</Button>
+      <Button>Search</Button>
+      <Button>Preference Dropdown</Button>
+      <Button>Categories Dropdown</Button>
       <Header users={users} onHandleDeleteUser={onHandleDeleteUser} />
-      <button>Preference Dropdown</button>
-      <button>Categories Dropdown</button>
-      <button>Search</button>
+      <Form users={users} onUserUpdate={onUserUpdate}/>
+      <PreferencesForm preferences={preferences} onHandlePreferenceDelete={onHandlePreferenceDelete} restrictions={restrictions} setRestrictions={setRestrictions}/>
       <RecipeContainer recipes={recipes}/>
       </div>
   );
