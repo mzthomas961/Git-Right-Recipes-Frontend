@@ -1,11 +1,13 @@
 import React from "react";
 import User from "./User";
 
-function Header({users}) { 
+function Header({users, onHandleDeleteUser}) { 
     const userProfile = users.map((user) => {
         return (
           <User
             key={user.id}
+            onHandleDeleteUser={onHandleDeleteUser}
+            id={user.id}
             image={user.image}
             diet={user.diets.map((diet) => {return (diet.name)})}
             name={user.name}
@@ -13,12 +15,9 @@ function Header({users}) {
             />
             )}
         ); 
-  
+        
 return (
     <div>
-       
-        <h1>User Profile</h1>
-
             {userProfile}
      </div>
     )

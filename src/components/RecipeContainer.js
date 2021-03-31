@@ -17,6 +17,7 @@ function RecipeContainer({recipes}) {
         )
     })
     return (
+
         <div>
         <h2>All Recipes</h2>
         {recipeComponents}

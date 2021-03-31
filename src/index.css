@@ -16,10 +16,19 @@ code {
   text-align: left;
 }
 
-.images {
-  width: 6 rem;
-  height: 6 rem; 
-}
+/* .images {
+  text-align: center;
+  font-family: sans-serif;
+  background-color: rgb(155, 176, 199);
+  border-radius: 10px;
+  border: grey 2px ;
+  padding: 1rem;
+  width: 15rem;
+  height: 20rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px #e04b52 */
+/* } */
 
 /* .foodcard {
   width:15rem;
