@@ -1,37 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-function Form( { onUserUpdate, handlePreferenceDelete }) {
-    const [preferences, setPreferences] = useState([])
+function Form( { onUserUpdate }) {
+   
     const [restriction, setRestriction] = useState([])
     const [diet, setDiet] = useState([])
-    console.log(preferences)
-
-    function onHandleDeletePreference(id) {
-        const updatedDeletedPreference = preferences.filter(
-          (preference) => preference.id !== id
-        );
-        setPreferences(updatedDeletedPreference)
-      }
-    
-
-    useEffect(() => {
-        fetch("http://localhost:3000/preferences")
-      .then(r => r.json())
-      .then(preferencesArray => 
-        setPreferences(preferencesArray));
-      },[]);
-     
-
-    function handleUserPreferenceDelete(id){
-        fetch(`http://localhost:3000/preferences/${id}`, {
-            method: "DELETE"
-          })
-            .then(r => r.json())
-            .then(() => {console.log((id))
-            });
-            onHandleDeletePreference(id)
-        }
-    
 
     function handleOnUserUpdate(e) {
         e.preventDefault();
@@ -48,10 +20,25 @@ function Form( { onUserUpdate, handlePreferenceDelete }) {
         })
             .then((r) => r.json())
             .then((updateUserInfo) => onUserUpdate(updateUserInfo))
-            console.log(diet)
-            console.log(restriction)
 }
    
+// function handleUserPreferenceDelete(id){
+//     fetch(`http://localhost:3000/preferences/${id}`, {
+//         method: "DELETE"
+//       })
+//         .then(r => r.json())
+//         .then(() => {console.log((id))
+//         });
+//         onHandleDeletePreference(id)
+//     }
+
+    // function onHandleDeletePreference(id) {
+    //     const updatedDeletedPreference = preferences.filter(
+    //       (preference) => preference.prefObj => return {(prefObj.id !== id)} ;
+    //     setPreferences(updatedDeletedPreference)
+    //   }
+    
+
     return (
         <div>
             <form onSubmit={handleOnUserUpdate}>
@@ -65,15 +52,15 @@ function Form( { onUserUpdate, handlePreferenceDelete }) {
                  <option value="3">Paleo</option>
             </select>
         <button type="submit">Submit</button>
-            <form >
+            {/* <form >
                 <h2>Delete Preferences</h2>
-                <select value={diet} name="Diet" id="diet_id" onSubmit={handleUserPreferenceDelete}>
-                 <option value="1">{preferences[0]}</option>
+                <select value={diet} name="Diet" id="diet_id" onChange={handleUserPreferenceDelete}>
+                 <option value="1">Vegetarian</option>
                  <option value="2">Vegan</option>
                  <option value="3">Paleo</option>
             </select>
-
-            </form>
+        <button type="submit">Submit</button>
+            </form> */}
        </form>
      </div>
     )

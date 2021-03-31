@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import RecipeContainer from "./RecipeContainer";
 import Form from "./Form";
+import PreferencesForm  from "./PreferencesForm"
 
 function App() {
   const [users, setUsers] = useState([])
   const [recipes, setRecipes] = useState([])
+  const [preferences, setPreferences] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:3000/users")
@@ -23,16 +25,14 @@ useEffect(() => {
   setRecipes(recipeArray));
 },[]);
 
-function handlePreferenceDelete(id) {
-  const deletePreference = users.map(user => {
-  if (user.id === id){
-  return (setUsers(deletePreference))
-} else {
-    return user
-}
-  })
-}
-
+ useEffect(() => {
+        fetch("http://localhost:3000/preferences")
+      .then(r => r.json())
+      .then(preferencesArray => {
+        setPreferences(preferencesArray)}
+        );
+      },[]);
+     
 function onUserUpdate(id) {
   const updatedUser = users.map(user => {
     if (user.id === id) {
@@ -49,6 +49,14 @@ function onHandleDeleteUser(id) {
   );
   setUsers(updatedDeletedUserList)
 }
+
+function onHandlePreferenceDelete(id) {
+  const updatedDeletedPreference = preferences.filter(
+    (preference) => preference.id !== id
+  );
+  setPreferences(updatedDeletedPreference)
+}
+
 
 
 
@@ -79,7 +87,8 @@ function onHandleDeleteUser(id) {
   return (
     <div>
       <h1>Git Right Recipes</h1>
-      <Form users={users} onUserUpdate={onUserUpdate} handlePreferenceDelete={handlePreferenceDelete}/>
+      <Form users={users} onUserUpdate={onUserUpdate}/>
+      <PreferencesForm preferences={preferences} onHandlePreferenceDelete={onHandlePreferenceDelete}/>
       <button>Home</button>
       <button>Update Profile</button>
       <Header users={users} onHandleDeleteUser={onHandleDeleteUser} />
