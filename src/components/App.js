@@ -4,7 +4,6 @@ import Header from "./Header";
 import RecipeContainer from "./RecipeContainer";
 import Form from "./Form";
 import PreferencesForm  from "./PreferencesForm"
-import styled from "styled-components";
 
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
   const [recipes, setRecipes] = useState([])
   const [preferences, setPreferences] = useState([])
   const [restrictions, setRestrictions] = useState('')
-  const [newRestriction, setNewRestriction] = useState("")
+
 
   useEffect(() => {
     fetch("http://localhost:3000/users")
@@ -61,49 +60,13 @@ function onHandlePreferenceDelete(id) {
   setPreferences(updatedDeletedPreference)
 }
 
-function handleRestrictionUpdate(id, newRestriction) {
-  const updatedRestriction = preferences.map((preference) => {
-    if (preference.id === id) {
-      return (setRestrictions(newRestriction))
-    } else {
-    return preference
-  }
-  })
-}
-
-
-const Button = styled.button`
-background: dodgerblue;
-padding: 5px;
-border: 2px solid black;
-border-radius: 4px;
-cursor: pointer;
-transition: 200ms ease;
-color: white;
-text-decoration: none;
-font: 1rem sans-serif;
-
-&:hover {
-  background: blueviolet;
-  color: white;
-}
-
-&:focus {
-  background: hotpink;
-  color: white;
-}
-`;
 
   return (
     <div>
-      <Button>Home</Button>
-      <Button>Update Profile</Button>
-      <Button>Search</Button>
-      <Button>Preference Dropdown</Button>
-      <Button>Categories Dropdown</Button>
+      <h1>Git Right Recipes</h1>
       <Header users={users} onHandleDeleteUser={onHandleDeleteUser} />
       <Form users={users} onUserUpdate={onUserUpdate}/>
-      <PreferencesForm preferences={preferences} newRestriction={newRestriction} handleRestrictionUpdate={handleRestrictionUpdate} onHandlePreferenceDelete={onHandlePreferenceDelete} restrictions={restrictions} setRestrictions={setRestrictions}/>
+      <PreferencesForm preferences={preferences} onHandlePreferenceDelete={onHandlePreferenceDelete} restrictions={restrictions} setRestrictions={setRestrictions}/>
       <RecipeContainer recipes={recipes}/>
       </div>
   );

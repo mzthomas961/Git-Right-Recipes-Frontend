@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 
 function Preference({id, diet, diet_id, restriction, onHandlePreferenceDelete, restrictions, setRestrictions}) {
-  
+ 
+
 const Button = styled.button`
   background: dodgerblue;
   padding: 5px;
@@ -51,15 +52,15 @@ const Button = styled.button`
     }),
 })
     .then((r) => r.json())
-    .then((updateUserInfo) => console.log(updateUserInfo))
+    .then((updateUserInfo) => setRestrictions(updateUserInfo))
     }
+
+   
 
     return (
         <div>
         <section>
-        <h2>Preference: {diet} ("and restriction: {restriction}")</h2>
-        </section>
-       <section>
+        <h2>Preference: {diet} ("and restriction: {restriction}") </h2>
         <form onSubmit={(e) => handleRestriction(id, e)}>
         <label> Update Restriction 
         <input type="text" onChange={(e) => setRestrictions(e.target.value)} placeholder="Type here..." value={restrictions}/>

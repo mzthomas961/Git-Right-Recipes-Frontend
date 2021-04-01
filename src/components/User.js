@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 
 function User({name, image, diet, restriction, id, onHandleDeleteUser}) {
-   
+  //  const [newImage, setNewImage] = useState("")
 const Visual = styled.div`
 background: ${props => props.background || "aliceblue"};
 height: 120px;
@@ -44,9 +44,6 @@ ${layoutBox};
     font-weight: bold;
   `;
   
-  
-
-  
     const Button = styled.button`
     background: dodgerblue;
     padding: 5px;
@@ -78,6 +75,26 @@ ${layoutBox};
           });
           onHandleDeleteUser(id)
       }
+
+    //   function handleImageUpdate(e, id) {
+    //       e.preventDefault()
+       
+
+    //       fetch(`http://localhost:3000/users/${id}`, {
+    //         method: "PATCH",
+    //         headers: {
+    //         "Content-Type" : "application/json",
+    //       },
+    //         body: JSON.stringify({
+    //         name:name,
+    //         image:newImage,
+    //         password:"Scout123",
+    //     }),
+    // })
+    //     .then((r) => r.json())
+    //     .then((updateImage) => console.log(updateImage))
+
+    //   }
   
 return (
 
@@ -90,8 +107,8 @@ return (
             <p>Preference: {diet}</p>
             </Visual>
           <img src={image} alt={name}/>
-          <Button onClick={() => handleDelete(id)}>Delete Account</Button>
         </Box>
+        <Button onSubmit={() => handleDelete(id)}>Delete Account</Button>
       </ClampingMyStyleLayout>
     </div>
     )

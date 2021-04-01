@@ -1,7 +1,10 @@
 import React from "react";
-import Preference from "./Preference"
+import Preference from "./Preference";
+
 
 function PreferencesForm({ preferences, onHandlePreferenceDelete, restrictions, setRestrictions }) {
+    
+   
 
      const deletePreference = preferences.map((preference) => {
          return (
@@ -13,15 +16,14 @@ function PreferencesForm({ preferences, onHandlePreferenceDelete, restrictions, 
                 onHandlePreferenceDelete={onHandlePreferenceDelete}
                 restrictions={restrictions} 
                 setRestrictions={setRestrictions}
-                diet_id={preference.diet.id}
-                
+                diet_id={preference.diet.id}  
            />
      )
          });
     
     return (
         <div>
-           {deletePreference}
+          {deletePreference}
         </div>
     )
 }
