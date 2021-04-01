@@ -11,7 +11,8 @@ function App() {
   const [users, setUsers] = useState([])
   const [recipes, setRecipes] = useState([])
   const [preferences, setPreferences] = useState([])
-  const [restrictions, setRestrictions] = useState("")
+  const [restrictions, setRestrictions] = useState('')
+  const [newRestriction, setNewRestriction] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:3000/users")
@@ -60,39 +61,16 @@ function onHandlePreferenceDelete(id) {
   setPreferences(updatedDeletedPreference)
 }
 
-// function handleRestrictionUpdate(newRestriction) {
-//   const updatedRestriction = preferences.map((preference) => {
-//     if (preference.restriction !== newRestriction) {
-//     return (setRestrictions(updatedRestriction))
-//   } else {
-//     return restrictions
-//   }
-//   })
-// }
+function handleRestrictionUpdate(id, newRestriction) {
+  const updatedRestriction = preferences.map((preference) => {
+    if (preference.id === id) {
+      return (setRestrictions(newRestriction))
+    } else {
+    return preference
+  }
+  })
+}
 
-// function handleCategoryClick() {
-//   setFilters(filter);
-// }
-
-// function handleCategoryFilter() {
-
-//   const updatedFilterArray = recipes.filter( {
-//     if(recipe => recipe.breakfast == true);
-//     setRecipes(updatedFilterArray)
-//     else
-//   })
-
-  // let url = "http://localhost:3000/recipes";
-
-  // if (filters.type !== "all") {
-  //   url += `?type=${filters.type}`
-  // }
-  // fetch(url)
-  // .then((r) => r.json())
-  // .then((filteredRecipes) => {
-  //   setRecipes(filteredRecipes);
-  // });
-// }
 
 const Button = styled.button`
 background: dodgerblue;
@@ -125,7 +103,7 @@ font: 1rem sans-serif;
       <Button>Categories Dropdown</Button>
       <Header users={users} onHandleDeleteUser={onHandleDeleteUser} />
       <Form users={users} onUserUpdate={onUserUpdate}/>
-      <PreferencesForm preferences={preferences} onHandlePreferenceDelete={onHandlePreferenceDelete} restrictions={restrictions} setRestrictions={setRestrictions}/>
+      <PreferencesForm preferences={preferences} newRestriction={newRestriction} handleRestrictionUpdate={handleRestrictionUpdate} onHandlePreferenceDelete={onHandlePreferenceDelete} restrictions={restrictions} setRestrictions={setRestrictions}/>
       <RecipeContainer recipes={recipes}/>
       </div>
   );

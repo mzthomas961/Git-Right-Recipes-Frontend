@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 function Preference({id, diet, diet_id, restriction, onHandlePreferenceDelete, restrictions, setRestrictions}) {
   
-  const Button = styled.button`
+const Button = styled.button`
   background: dodgerblue;
   padding: 5px;
   border: 2px solid black;
@@ -21,10 +21,10 @@ function Preference({id, diet, diet_id, restriction, onHandlePreferenceDelete, r
   }
 
   &:focus {
-    background: hotpink;
-    color: white;
-  }
-`;
+  background: hotpink;
+   color: white;
+ }
+ `;
   
     function handlePreference(id) {
         fetch(`http://localhost:3000/preferences/${id}`, {
@@ -36,10 +36,9 @@ function Preference({id, diet, diet_id, restriction, onHandlePreferenceDelete, r
           onHandlePreferenceDelete(id)
       }
 
-    function handleRestriction(id) {
-      console.log(diet)
-      console.log(restrictions)
-      console.log(id)
+    function handleRestriction(id, e) {
+      e.preventDefault()
+     
       fetch(`http://localhost:3000/preferences/${id}`, {
         method: "PATCH",
         headers: {
@@ -51,21 +50,26 @@ function Preference({id, diet, diet_id, restriction, onHandlePreferenceDelete, r
         restriction:restrictions
     }),
 })
-    // .then((r) => r.json())
-    // .then((updateUserInfo) => setRestrictions(updateUserInfo))
+    .then((r) => r.json())
+    .then((updateUserInfo) => console.log(updateUserInfo))
     }
 
     return (
         <div>
-        <h2>Delete Preference</h2>
-        <p>Preference: {diet} ("and restriction: {restriction}")</p>
-        <Button onClick={() => handlePreference(id)}>Delete</Button>
-        <form onSubmit={handleRestriction}>
-        <label>
+        <section>
+        <h2>Preference: {diet} ("and restriction: {restriction}")</h2>
+        </section>
+       <section>
+        <form onSubmit={(e) => handleRestriction(id, e)}>
+        <label> Update Restriction 
         <input type="text" onChange={(e) => setRestrictions(e.target.value)} placeholder="Type here..." value={restrictions}/>
         </label>
-        <button >Update</button>
+        <Button type="submit" >Update</Button>
         </form>
+        </section>
+        <label> Delete Preference 
+        <Button onClick={() => handlePreference(id)}>Delete</Button>
+        </label>
         </div>
     )
 }

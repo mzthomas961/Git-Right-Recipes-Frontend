@@ -14,6 +14,7 @@ function PreferencesForm({ preferences, onHandlePreferenceDelete, restrictions, 
                 restrictions={restrictions} 
                 setRestrictions={setRestrictions}
                 diet_id={preference.diet.id}
+                
            />
      )
          });
