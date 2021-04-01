@@ -43,8 +43,14 @@ function onUserUpdate(id) {
     } else {
         return user
       }
-})
+})}
+function handleRestrictionUpdate(updatedPreference){
+  const updatedPreferences = preferences.filter(
+  (preference) =>preference.id !== updatedPreference.id)
+  const a = [...updatedPreferences, updatedPreference]
+  setPreferences(a)
 }
+
 
 function onHandleDeleteUser(id) {
   const updatedDeletedUserList = users.filter(
@@ -65,8 +71,8 @@ function onHandlePreferenceDelete(id) {
     <div>
       <h1>Git Right Recipes</h1>
       <Header users={users} onHandleDeleteUser={onHandleDeleteUser} />
-      <Form users={users} onUserUpdate={onUserUpdate}/>
-      <PreferencesForm preferences={preferences} onHandlePreferenceDelete={onHandlePreferenceDelete} restrictions={restrictions} setRestrictions={setRestrictions}/>
+      <Form users={users} onUserUpdate={onUserUpdate} />
+      <PreferencesForm handleRestrictionUpdate={handleRestrictionUpdate} preferences={preferences} onHandlePreferenceDelete={onHandlePreferenceDelete} restrictions={restrictions} setRestrictions={setRestrictions}/>
       <RecipeContainer recipes={recipes}/>
       </div>
   );

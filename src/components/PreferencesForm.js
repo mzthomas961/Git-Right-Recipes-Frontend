@@ -2,7 +2,7 @@ import React from "react";
 import Preference from "./Preference";
 
 
-function PreferencesForm({ preferences, onHandlePreferenceDelete, restrictions, setRestrictions }) {
+function PreferencesForm({ preferences, onHandlePreferenceDelete, restrictions, setRestrictions, handleRestrictionUpdate }) {
     
    
 
@@ -17,6 +17,7 @@ function PreferencesForm({ preferences, onHandlePreferenceDelete, restrictions, 
                 restrictions={restrictions} 
                 setRestrictions={setRestrictions}
                 diet_id={preference.diet.id}  
+                handleRestrictionUpdate={handleRestrictionUpdate}
            />
      )
          });

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 
-function Preference({id, diet, diet_id, restriction, onHandlePreferenceDelete, restrictions, setRestrictions}) {
+function Preference({handleRestrictionUpdate, id, diet, diet_id, restriction, onHandlePreferenceDelete, restrictions, setRestrictions}) {
  
 
 const Button = styled.button`
@@ -52,7 +52,7 @@ const Button = styled.button`
     }),
 })
     .then((r) => r.json())
-    .then((updateUserInfo) => setRestrictions(updateUserInfo))
+    .then((updatedPreference) => handleRestrictionUpdate(updatedPreference))
     }
 
    

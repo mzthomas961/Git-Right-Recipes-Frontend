@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./User";
 
-function Header({users, onHandleDeleteUser}) { 
+function Header({users, onHandleDeleteUser, handleRestrictionUpdate}) { 
     const userProfile = users.map((user) => {
         return (
           <User
@@ -12,6 +12,7 @@ function Header({users, onHandleDeleteUser}) {
             diet={user.diets.map((diet) => {return (diet.name + ", ")})}
             name={user.name}
             restriction={user.preferences.map((preference) =>  {return (preference.restriction + ", ")})}
+            handleRestrictionUpdate = {handleRestrictionUpdate}
             />
             )}
         ); 
