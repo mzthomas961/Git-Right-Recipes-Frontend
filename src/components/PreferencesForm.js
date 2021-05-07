@@ -3,8 +3,6 @@ import Preference from "./Preference";
 
 
 function PreferencesForm({ preferences, onHandlePreferenceDelete, restrictions, setRestrictions, handleRestrictionUpdate }) {
-    
-   
 
      const deletePreference = preferences.map((preference) => {
          return (
